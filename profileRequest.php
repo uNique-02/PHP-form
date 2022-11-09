@@ -12,7 +12,6 @@
     <body>
         <?php 
 
-            $directory = dirname($_POST["picture"]);
             $picture =  $_POST["picture"];
             $name = $_POST["name"];
             $age = $_POST["age"];
@@ -30,7 +29,7 @@
         <h1>Online Slambook</h1>
         <div class="content">
             <div>
-                <img height="300px" width="250px" src="<?php echo $directory.$picture ?>" alt="My Picture">
+                <img height="300px" width="250px" src="<?php echo $picture ?>" alt="My Picture">
                 <fieldset>
                     <legend><h2 class="legend">
                         Motto in Life
