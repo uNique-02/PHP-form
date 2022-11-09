@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF8">
+        <title>CMSC 121 Day 03 - PHP</title>
+        <link rel="stylesheet" href="profile.css">
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap');
+        </style> 
+    </head>
+    <body>
+        <div>
+            <fieldset>
+                <legend>New Profile</legend>
+                <form method="POST">
+                    <label name="picture">Profile Picture: </label>
+                    <input type="file" name="picture" class="file">             
+                    <label>Name: </label>
+                    <input type="text" name="age">
+                    <label name="age">Age: </label>
+                    <input type="text" name="age" class="age">
+                    <label name="bday">Birthday: </label>
+                    <input type="date" name="bday">
+                    <label name="address">Address: </label>
+                    <input type="text" name="address">
+                    <label name="motto">Motto: </label>
+                    <textarea name="motto"></textarea>
+                    <label for="course" name="course">Course: </label>
+                    <select id="course">
+                        <option value="BSCS">
+                            BS Computer Science
+                        </option>
+                        <option value="BSM">
+                            BS Management
+                        </option>
+                        <option value="BSM">
+                            BS Biology
+                        </option>
+                    </select>
+                    <label>Subjects this sem: </label>
+                    <input type="text" readonly class="textfield" name="subjects">
+                    <label>Favorite Movie/Series: </label>
+                    <input type="text" readonly class="textfield" name="fmovie">
+                    <p>Hobbies (Max of 5)</p>
+                    <p></p>
+                    <label name="h1">Hobby 1</label>
+                    <input type="text" name="h1" placeholder="Hobby 1">
+                    <label name="h2">Hobby 2</label>
+                    <input type="text" name="h2" placeholder="Hobby 2">
+                    <label name="h3">Hobby 3</label>
+                    <input type="text" name="h3" placeholder="Hobby 3">
+                    <label name="h4">Hobby 4</label>
+                    <input type="text" name="h4" placeholder="Hobby 4">
+                    <label name="h5">Hobby 5</label>
+                    <input type="text" name="h5" placeholder="Hobby 5">
+                </form>
+            </fieldset>
+            <div>
+                
+            </div>
+        </div>
+    </body>
+</html>

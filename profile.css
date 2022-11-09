@@ -1,0 +1,49 @@
+*{
+    font-family: 'Fuzzy Bubbles', cursive;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+input, select{
+    height: 30px;
+}
+label, input, textarea, select{
+    margin: 10px 0;
+}
+label, p, legend{
+    display: block;
+    font-weight: bold;
+}
+#movie, .textarea{
+    height: 100px;
+    line-height: 10px;
+    overflow-y: scroll;
+}
+.textarea{
+    resize: none;
+}
+.file{
+    border: 1px solid grey;
+    padding: 5px 0px 0px 5px;
+}
+body{
+    margin: 100px;
+}
+fieldset{
+    padding: 50px 100px 25px 50px;
+}
+.age{
+    width: 100px;
+}
+.button{
+    margin: 10px auto;
+    display: block;
+}
+legend, .button{
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    border-radius: 15px;
+}

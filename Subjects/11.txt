@@ -1,0 +1,7 @@
+NSTP-CWTS 1
+RS3
+(3.0)
+S
+8:00-11:00
+MPB
+Lec

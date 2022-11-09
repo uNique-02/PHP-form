@@ -1,0 +1,33 @@
+body{
+    background-image: url("index.png");
+    margin: -8px;
+    padding: 200px 300px 200px 300px;
+}
+div{
+    border: 5px solid black;
+    height: 300px;
+    text-align: center;
+    padding: 100px;
+}
+input{
+    display: block;
+    margin: 10px auto;
+    height: 40px;
+}
+.btn{
+    width: 100px;
+}
+.text{
+    width: 250px;
+    margin-top: 40px;
+}
+*{
+    font-family: 'Fuzzy Bubbles', cursive;
+}
+a{
+    color: yellow;
+}
+h1{
+    font-size: 48px;
+    font-weight: bold;
+}

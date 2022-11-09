@@ -1,0 +1,65 @@
+*{
+    font-family: 'Fuzzy Bubbles', cursive;
+}
+body{
+    margin: 50px;
+    padding: 0;
+}
+.content{
+    display: grid;
+    grid-template-columns: 20% 45% 30%;
+    gap: 2.5%;
+}
+h1, .legend{
+    color: white;
+    background-color: #3eb489;
+}
+h1{
+    text-align: center;
+    font-size: 40px;
+}
+img, fieldset{
+    border: 5px dotted gray;
+    border-radius: 20px;
+}
+img{
+    padding: 5px;
+}
+.legend{
+    border-radius: 20px;
+    padding: 10px;
+}
+table{
+    column-width: 20% 5% 10% 10% 25% 20% 10%;
+}
+table th{
+    text-align: left;
+}
+
+tr:nth-child(odd) {
+    background-color: #9CABA6;
+}
+span{
+    font-weight: bold;
+}
+#c1{
+    width: 20%;
+}
+#c2{
+    width: 5%;
+}
+#c3{
+    width: 10%;
+}
+#c4{
+    width: 10%;
+}
+#c5{
+    width: 25%;
+}
+#c6{
+    width: 20%;
+}
+#c7{
+    width: 10%;
+}
