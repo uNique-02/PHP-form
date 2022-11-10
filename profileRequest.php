@@ -11,6 +11,7 @@
     </head>
     <body>
         <?php 
+        $strC = $strM = null;
         if(exists($_POST["name"])){
             include "exists.html";
         }
@@ -38,7 +39,15 @@
             file_put_contents("data/$name/bday.txt", $bday);
             file_put_contents("data/$name/address.txt", $address);
             file_put_contents("data/$name/motto.txt", $motto);
-            file_put_contents("data/$name/courses.txt", serialize($courses));
+            file_put_contents("data/$name/images.txt", $picture);
+            foreach($courses as $course){
+                $strC = $strC.$course."\n";
+            }
+            file_put_contents("data/$name/courses.txt", $strC);
+            foreach($_POST["movies"] as $movie){
+                $strM = $strM.$movie."\n";
+            }
+            file_put_contents("data/$name/movies.txt", $strM);
             file_put_contents("data/$name/course.txt", $course);
             file_put_contents("data/$name/hb1.txt", $hb1);
             file_put_contents("data/$name/hb2.txt", $hb2);

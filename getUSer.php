@@ -10,22 +10,26 @@
         </style> 
     </head>
     <body>
-         <?php echo $_POST["name"]; 
-
-         $name = file("data/$name/name.txt");
-         $age = file("data/$name/age.txt");
-         $bday = file("data/$name/bday.txt");
-         $address= file("data/$name/address.txt");
-         $motto = file("data/$name/motto.txt");
-        $courses = file(unserialized("data/$name/courses.txt"));
-        $course = file("data/$name/course.txt");
-        $hb1 = ("data/$name/hb1.txt");
-        $hb2 = ("data/$name/hb2.txt");
-        $hb3 =("data/$name/hb3.txt");
-        $hb4 = ("data/$name/hb4.txt");
-        $hb5 = ("data/$name/hb5.txt");
-
-            ?>
+         <?php $name = $_POST["name"]; 
+        if(!exists($_POST["name"])){
+            include "notExists.html";
+        }
+        else{
+        // $name = file("data/$name/name.txt");
+         $age = implode(" ", file("data/$name/age.txt"));
+         $bday = implode(" ", file("data/$name/bday.txt"));
+         $address= implode(" ", file("data/$name/address.txt"));
+         $motto = implode(" ", file("data/$name/motto.txt"));
+        $courses = file("data/$name/courses.txt");
+        $movies = file("data/$name/movies.txt");
+        $course = implode(" ", file("data/$name/course.txt"));
+        $hb1 = implode(" ", file("data/$name/hb1.txt"));
+        $hb2 = implode(" ", file("data/$name/hb2.txt"));
+        $hb3 = implode(" ", file("data/$name/hb3.txt"));
+        $hb4 = implode(" ", file("data/$name/hb4.txt"));
+        $hb5 = implode(" ",file("data/$name/hb5.txt"));
+        $picture= implode(" ", file("data/$name/images.txt"));
+                ?>
          <h1>Online Slambook</h1>
         <div class="content">
             <div>
@@ -79,12 +83,12 @@
                         
                         <?php 
                             foreach($courses as $course){ ?>
-                                <?php $course_file= file("Subjects/".$course.".txt")?>
+                                <?php $course_file= file("Subjects/".trim($course).".txt")?>
                                 <tr>
                                     <?php 
                                         foreach($course_file as $indiv){
                                             ?>
-                                                <td> <?php echo $indiv ?> </td>
+                                                <td> <?= $indiv ?> </td>
                                             <?php
                                         }
 
@@ -106,7 +110,7 @@
                     </h3></legend>
                     <ol>
                         <?php 
-                            foreach($_POST["movies"] as $movie){
+                            foreach($movies as $movie){
                                 ?>
                                     <li> <?php echo $movie; ?> (<a href="google.com">IMDB</a>) </li>
                                 <?php
@@ -121,25 +125,27 @@
                     </h3></legend>
                 <ul>
                     <li>
-                        <?php echo $_POST["h1"]; ?>
+                        <?php echo $hb1; ?>
                     </li>
                     <li>
-                        <?php echo $_POST["h2"]; ?>
+                        <?php echo $hb2; ?>
                     </li>
                     <li>
-                        <?php echo $_POST["h3"]; ?>
+                        <?php echo $hb3; ?>
                     </li>
                     <li>
-                        <?php echo $_POST["h4"]; ?>
+                        <?php echo $hb4; ?>
                     </li>
                     <li>
-                        <?php echo $_POST["h5"]; ?>
+                        <?php echo $hb5; ?>
                     </li>
                 </ul>
                 </fieldset>
             </div>
         </div>
-        <?php function exists($user){
+        <?php 
+        }
+        function exists($user){
             $users = file("users.txt");
             if(in_array(strtolower($user), $users)){
                 return true;

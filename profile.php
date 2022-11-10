@@ -26,6 +26,12 @@
             foreach ($movies as $movie){
                 $stringM = $stringM."\n".$movie;
             }
+            
+            $stringP = null;
+            $programs = file("programs.txt");
+            foreach ($programs as $program){
+                $stringP = $stringP.$program."\n";
+            }
             ?>
         <div>
             <fieldset>
@@ -45,19 +51,17 @@
                     <label name="motto">Motto: </label>
                     <textarea name="motto"></textarea>
                     <label for="course">Course: </label>
-                    <select name="course" id="course">
-                        <option value="BS Computer Science" selected>
-                            BS Computer Science
-                        </option>
-                        <option value="BS Management" >
-                            BS Management
-                        </option>
-                        <option value="BS Biology" >
-                            BS Biology
-                        </option>
-                        <option value="BA (SS) Political SCience">
-                            BA (SS) Political SCience
-                        </option>
+                    <select name="course" id="course"> 
+                        <option value="<?php echo $programs[0]?>" selected>
+                        <?php echo $programs[0]?>
+                        </option> 
+                        <?php
+                        for($i=1; $i<sizeof($programs); $i++){?>
+                            <option value="<?php echo $programs[$i]?>"> <?php
+                                echo $programs[$i]; ?>
+                            </option>
+                                <?php
+                            } ?>
                     </select>
                     <label>Subjects this sem: </label>
                     <select name="subjects[]" style="height: 100px;" multiple size="11"> 
@@ -68,10 +72,11 @@
                         </option>
                             <?php
                         }
+                        $id = 0;
                         ?>
                     </select>
                     <label>Favorite Movie/Series: </label>
-                    <select name="movies[]" style="height: 100px;" multiple> 
+                    <select name="movies[]" style="height: 100px;" multiple size="11"> 
                         <?php 
                         foreach($movies as $movie){?>
                         <option value="<?php echo $movie?>"> <?php
@@ -84,15 +89,15 @@
                     
                     <p>Hobbies (Max of 5)</p>
                     <p></p>
-                    <label name="h1">Hobby 1</label>
+                    <label >Hobby 1</label>
                     <input type="text" name="h1" placeholder="Hobby 1" required>
-                    <label name="h2">Hobby 2</label>
+                    <label >Hobby 2</label>
                     <input type="text" name="h2" placeholder="Hobby 2" required>
-                    <label name="h3">Hobby 3</label>
+                    <label >Hobby 3</label>
                     <input type="text" name="h3" placeholder="Hobby 3" required>
-                    <label name="h4">Hobby 4</label>
+                    <label >Hobby 4</label>
                     <input type="text" name="h4" placeholder="Hobby 4" required>
-                    <label name="h5">Hobby 5</label>
+                    <label >Hobby 5</label>
                     <input type="text" name="h5" placeholder="Hobby 5" required>
                     </div>
                     <input type="submit" value=Submit class="button">
