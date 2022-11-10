@@ -10,43 +10,23 @@
         </style> 
     </head>
     <body>
-        <?php 
-        if(exists($_POST["name"])){
-            include "exists.html";
-        }
-        else{
-            $myFile = fopen("users.txt", "w");
-            fwrite($myFile, strtolower($_POST["name"]));
+         <?php echo $_POST["name"]; 
 
-            $picture =  $_POST["picture"];
-            $name = $_POST["name"];
-            $age = $_POST["age"];
-            $bday = $_POST["bday"];
-            $address = $_POST["address"];
-            $motto = $_POST["motto"];
-            $course = $_POST["course"];
-            $courses = $_POST["subjects"];
-            $hb1 = $_POST["h1"];
-            $hb2 = $_POST["h2"];
-            $hb3 = $_POST["h3"];
-            $hb4 = $_POST["h4"];
-            $hb5 = $_POST["h5"];
+         $name = file("data/$name/name.txt");
+         $age = file("data/$name/age.txt");
+         $bday = file("data/$name/bday.txt");
+         $address= file("data/$name/address.txt");
+         $motto = file("data/$name/motto.txt");
+        $courses = file(unserialized("data/$name/courses.txt"));
+        $course = file("data/$name/course.txt");
+        $hb1 = ("data/$name/hb1.txt");
+        $hb2 = ("data/$name/hb2.txt");
+        $hb3 =("data/$name/hb3.txt");
+        $hb4 = ("data/$name/hb4.txt");
+        $hb5 = ("data/$name/hb5.txt");
 
-            mkdir("data/".$name);
-            file_put_contents("data/$name/name.txt", $name);
-            file_put_contents("data/$name/age.txt", $age);
-            file_put_contents("data/$name/bday.txt", $bday);
-            file_put_contents("data/$name/address.txt", $address);
-            file_put_contents("data/$name/motto.txt", $motto);
-            file_put_contents("data/$name/courses.txt", serialize($courses));
-            file_put_contents("data/$name/course.txt", $course);
-            file_put_contents("data/$name/hb1.txt", $hb1);
-            file_put_contents("data/$name/hb2.txt", $hb2);
-            file_put_contents("data/$name/hb3.txt", $hb3);
-            file_put_contents("data/$name/hb4.txt", $hb4);
-            file_put_contents("data/$name/hb5.txt", $hb5);
-        ?>
-        <h1>Online Slambook</h1>
+            ?>
+         <h1>Online Slambook</h1>
         <div class="content">
             <div>
                 <img height="300px" width="250px" src="<?php echo $picture ?>" alt="My Picture">
@@ -159,7 +139,6 @@
                 </fieldset>
             </div>
         </div>
-        <?php    }  ?>
         <?php function exists($user){
             $users = file("users.txt");
             if(in_array(strtolower($user), $users)){
