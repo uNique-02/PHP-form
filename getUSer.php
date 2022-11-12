@@ -10,16 +10,19 @@
         </style> 
     </head>
     <body>
-         <?php $name = $_POST["name"]; 
-        if(!exists($_POST["name"])){
+        
+         <?php $name = $_POST["name"];
+         
+        $conn = new PDO('mysql:host=127.0.0.1:3308;dbname=cmsc121', "root", null);
+        //retrieves the data and store it to $result variable as an array
+        $query = $conn->query("SELECT name, age, birthday, address, motto, course FROM users WHERE name='$name'");
+        $max_row = $query->fetch(PDO::FETCH_ASSOC);
+        
+        if(exists($_POST["name"])){
             include "notExists.html";
         }
         else{
-        // $name = file("data/$name/name.txt");
-         $age = implode(" ", file("data/$name/age.txt"));
-         $bday = implode(" ", file("data/$name/bday.txt"));
-         $address= implode(" ", file("data/$name/address.txt"));
-         $motto = implode(" ", file("data/$name/motto.txt"));
+        
         $courses = file("data/$name/courses.txt");
         $movies = file("data/$name/movies.txt");
         $course = implode(" ", file("data/$name/course.txt"));
@@ -39,7 +42,8 @@
                         Motto in Life
                     </h2></legend>
                     
-                    <q><i><?php echo $motto?></i></q>
+                    <q><i><?php 
+                    echo $max_row["motto"]?></i></q>
                 </fieldset>
                 
             </div>
@@ -50,19 +54,19 @@
                         Personal Information
                     </h2>
                     <p>
-                        <span>Name: </span> <?php echo $name?>
+                        <span>Name: </span> <?php echo $max_row["name"]?>
                     </p>
                     <p>
-                        <span>Age: </span> <?php echo $age?>
+                        <span>Age: </span> <?php echo $max_row["age"]?>
                     </p>
                     <p>
-                        <span>Birthday: </span> <?php echo $bday?>
+                        <span>Birthday: </span> <?php echo $max_row["birthday"] ?>
                     </p>
                     <p>
-                        <span>Address: </span> <?php echo $address?>
+                        <span>Address: </span> <?php echo $max_row["address"]?>
                     </p>
                     <p>
-                        <span>Course: </span> <?php echo $course?>
+                        <span>Course: </span> <?php echo $max_row["course"]?>
                     </p>
                 </div>
                 <div>

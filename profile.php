@@ -15,23 +15,6 @@
          <?php 
             $id=0;
             
-            $string = null;
-            $courses = file("komsai_courses.txt");
-            foreach ($courses as $course){
-                $string = $string."\n".$course;
-            }
-
-            $stringM = null;
-            $movies = file("id_fMovie.txt");
-            foreach ($movies as $movie){
-                $stringM = $stringM."\n".$movie;
-            }
-            
-            $stringP = null;
-            $programs = file("programs.txt");
-            foreach ($programs as $program){
-                $stringP = $stringP.$program."\n";
-            }
             ?>
         <div>
             <fieldset>
@@ -52,38 +35,40 @@
                     <textarea name="motto"></textarea>
                     <label for="course">Course: </label>
                     <select name="course" id="course"> 
-                        <option value="<?php echo $programs[0]?>" selected>
-                        <?php echo $programs[0]?>
-                        </option> 
                         <?php
-                        for($i=1; $i<sizeof($programs); $i++){?>
-                            <option value="<?php echo $programs[$i]?>"> <?php
-                                echo $programs[$i]; ?>
-                            </option>
-                                <?php
-                            } ?>
+                        //Creates connection  
+                        $conn = new PDO('mysql:host=127.0.0.1:3308;dbname=cmsc121', "root", null);
+                        //retrieves the data and store it to $result variable as an array
+                        $result = $conn->query("SELECT id, name FROM courses");
+
+                        foreach($result as $res){
+                            ?> <option  value="<?php echo $res["name"]?>"> <?php
+                            echo $res["name"]; ?>
+                            </option> <?php
+                        } 
+                        ?>
+
                     </select>
                     <label>Subjects this sem: </label>
                     <select name="subjects[]" style="height: 100px;" multiple size="11"> 
                         <?php 
-                        foreach($courses as $subject){?>
-                        <option  value="<?php echo ++$id?>"> <?php
-                            echo $subject; ?>
-                        </option>
-                            <?php
-                        }
-                        $id = 0;
+                            $result = $conn->query("SELECT id, name FROM subjects");
+                            foreach($result as $res){
+                                ?> <option  value="<?php echo $res["id"]?>"> <?php
+                                echo $res["name"]; ?>
+                                </option> <?php
+                            } 
                         ?>
                     </select>
                     <label>Favorite Movie/Series: </label>
                     <select name="movies[]" style="height: 100px;" multiple size="11"> 
                         <?php 
-                        foreach($movies as $movie){?>
-                        <option value="<?php echo $movie?>"> <?php
-                            echo $movie; ?>
-                        </option>
-                            <?php
-                        }
+                        $result = $conn->query("SELECT name FROM movies");
+                        foreach($result as $res){
+                            ?> <option  value="<?php echo $res["name"]?>"> <?php
+                            echo $res["name"]; ?>
+                            </option> <?php
+                        } 
                         ?>
                     </select>
                     

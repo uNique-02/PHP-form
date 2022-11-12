@@ -32,28 +32,19 @@
             $hb3 = $_POST["h3"];
             $hb4 = $_POST["h4"];
             $hb5 = $_POST["h5"];
+            $hobby = $hb1.", ".$hb2.", ".$hb3.", ".$hb4.", ".$hb5;
+            $movies = $_POST["movies"];
 
-            mkdir("data/".$name);
-            file_put_contents("data/$name/name.txt", $name);
-            file_put_contents("data/$name/age.txt", $age);
-            file_put_contents("data/$name/bday.txt", $bday);
-            file_put_contents("data/$name/address.txt", $address);
-            file_put_contents("data/$name/motto.txt", $motto);
-            file_put_contents("data/$name/images.txt", $picture);
-            foreach($courses as $course){
-                $strC = $strC.$course."\n";
-            }
-            file_put_contents("data/$name/courses.txt", $strC);
-            foreach($_POST["movies"] as $movie){
-                $strM = $strM.$movie."\n";
-            }
-            file_put_contents("data/$name/movies.txt", $strM);
-            file_put_contents("data/$name/course.txt", $course);
-            file_put_contents("data/$name/hb1.txt", $hb1);
-            file_put_contents("data/$name/hb2.txt", $hb2);
-            file_put_contents("data/$name/hb3.txt", $hb3);
-            file_put_contents("data/$name/hb4.txt", $hb4);
-            file_put_contents("data/$name/hb5.txt", $hb5);
+           // $filename = $_FILES["uploadfile"]["name"];
+            //Creates connection  
+            $conn = new PDO('mysql:host=127.0.0.1:3308;dbname=cmsc121', "root", null);
+            //retrieves the data and store it to $result variable as an array
+            $qry = "INSERT INTO users  VALUES ('','$name','$age','$bday','$address','$motto','$course','$filename', '$hobby')";
+            $result = $conn->query($qry);
+            //foreach($movies as $movie){
+            //    $qry2 = "INSERT INTO user_fave_movies  VALUES ('', '$name', '$movie')";
+            //    $result = $conn->query($qry2);
+            //}
         ?>
         <h1>Online Slambook</h1>
         <div class="content">
@@ -96,7 +87,7 @@
                     </h2>
                     <table>
                         <tr>
-                            <th id="c1"> <span>SUBJECTS</span> </td>
+                            <th id="c1"> <span>SUBJECTS</span> </th>
                             <th id="c2"> <span>SEC</span> </th>
                             <th id="c3"> <span>UNIT</span> </th>
                             <th id="c4"> <span>DAYS</span> </th>
@@ -105,10 +96,14 @@
                             <th id="c7"> <span>CLASS TYPE</span> </th>
                         </tr>
                         <tr>
+                            <?php
                         
+                    ?>
+
+                    
+
                         <?php 
-                            foreach($courses as $course){ ?>
-                                <?php $course_file= file("Subjects/".$course.".txt")?>
+                            foreach($result as $res){ ?>
                                 <tr>
                                     <?php 
                                         foreach($course_file as $indiv){
